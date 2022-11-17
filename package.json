@@ -1,0 +1,20 @@
+{
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines":{
+    "node": ">=18"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexRicci93/api-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexRicci93/api-project/issues"
+  },
+  "homepage": "https://github.com/AlexRicci93/api-project#readme"
+}
