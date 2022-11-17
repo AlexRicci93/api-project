@@ -1,11 +1,11 @@
 {
+  "name": "api-project",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
-  "engines":{
-    "node": ">=18"
+  "engines": {
+    "node": ">=17"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlexRicci93/api-project.git"
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/AlexRicci93/api-project/issues"
   },
-  "homepage": "https://github.com/AlexRicci93/api-project#readme"
+  "homepage": "https://github.com/AlexRicci93/api-project#readme",
+  "dependencies": {
+    "jest": "^29.3.1"
+  }
 }
