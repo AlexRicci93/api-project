@@ -4,7 +4,7 @@
     "test": "jest"
   },
   "engines": {
-    "node": ">=17"
+    "node": ">=18"
   },
   "repository": {
     "type": "git",
