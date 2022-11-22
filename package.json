@@ -22,6 +22,7 @@
   "homepage": "https://github.com/AlexRicci93/api-project#readme",
   "devDependencies": {
     "@tsconfig/node18": "^1.0.1",
+    "@types/express": "^4.17.14",
     "@types/jest": "^29.2.3",
     "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
@@ -32,5 +33,9 @@
     "prettier": "2.7.1",
     "ts-jest": "^29.0.3",
     "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1"
   }
 }
