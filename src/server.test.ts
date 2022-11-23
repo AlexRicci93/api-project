@@ -4,7 +4,7 @@ import app from "./app";
 
 const request = supertest(app);
 
-test("GET /,planets", async () => {
+test("GET /planets", async () => {
     const response = await request
         .get("/planets")
         .expect(200)
