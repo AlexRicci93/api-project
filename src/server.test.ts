@@ -1,7 +1,7 @@
 import supertest from "supertest";
 import { prismaMock } from "./lib/prisma/client.mock";
 import app from "./app";
-import { prisma } from "@prisma/client";
+
 
 const request = supertest(app);
 
