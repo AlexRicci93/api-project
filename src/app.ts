@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client";
 import express from "express";
 import "express-async-errors";
 import prisma from "./lib/prisma/client";
@@ -22,7 +23,11 @@ app.post(
     "/planets",
     validate({ body: planetSchema }),
     async (request, response) => {
-        const planet: PlanetData = request.body;
+        const planetData: PlanetData = request.body;
+
+        const planet = await prisma.planet.create({
+            data: planetData,
+        });
 
         response.status(201).json(planet);
     }
