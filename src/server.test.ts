@@ -37,30 +37,80 @@ describe("GET /planets", () => {
 
         expect(response.body).toEqual(planets);
     });
+});
 
-    describe("POST /planets", () => {
-        test("Valid Request", async () => {
-            const planet = {
-                id: 3,
+describe("GET /planet:id", () => {
+    test("Valid request", async () => {
+        const planet = [
+            {
+                id: 1,
                 name: "Mercury",
                 description: null,
                 diameter: 1234,
                 moons: 12,
-                createdAt: "2022-11-27T17:44:09.520Z",
-                updatedAt: "2022-11-27T17:44:09.520Z",
-            };
+                createdAt: "2022-11-25T15:24:02.339Z",
+                updatedAt: "2022-11-25T15:23:24.930Z",
+            },
+        ];
 
-            //@ts-ignore
-            prismaMock.planet.create.mockResolvedValue(planet);
+        //@ts-ignore
+        prismaMock.planet.findUnique.mockResolvedValue(planet);
 
-            const response = await request
-                .post("/planets")
-                .send({ name: "Mercury", diameter: 1234, moons: 12 })
-                .expect(201)
-                .expect("Content-Type", /application\/json/);
+        const response = await request
+            .get("/planets/1")
+            .expect(200)
+            .expect("Content-Type", /application\/json/);
 
-            expect(response.body).toEqual(planet);
-        });
+        expect(response.body).toEqual(planet);
+    });
+
+    test("Planet does not exist", async () => {
+        //@ts-ignore
+        prismaMock.planet.findUnique.mockResolvedValue(null);
+
+        const response = await request
+            .get("/planets/23")
+            .expect(404)
+            .expect("Content-Type", /text\/html/);
+
+        expect(response.text).toContain("Cannot GET /planets/23");
+    });
+
+    test("Invalid planet ID", async () => {
+        //@ts-ignore
+        prismaMock.planet.findUnique.mockResolvedValue(null);
+
+        const response = await request
+            .get("/planets/asdf")
+            .expect(404)
+            .expect("Content-Type", /text\/html/);
+
+        expect(response.text).toContain("Cannot GET /planets/asdf");
+    });
+});
+
+describe("POST /planets", () => {
+    test("Valid Request", async () => {
+        const planet = {
+            id: 3,
+            name: "Mercury",
+            description: null,
+            diameter: 1234,
+            moons: 12,
+            createdAt: "2022-11-27T17:44:09.520Z",
+            updatedAt: "2022-11-27T17:44:09.520Z",
+        };
+
+        //@ts-ignore
+        prismaMock.planet.create.mockResolvedValue(planet);
+
+        const response = await request
+            .post("/planets")
+            .send({ name: "Mercury", diameter: 1234, moons: 12 })
+            .expect(201)
+            .expect("Content-Type", /application\/json/);
+
+        expect(response.body).toEqual(planet);
     });
 
     test("Invalid Request", async () => {
