@@ -27,6 +27,7 @@
   "homepage": "https://github.com/AlexRicci93/api-project#readme",
   "devDependencies": {
     "@tsconfig/node18": "^1.0.1",
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.14",
     "@types/jest": "^29.2.3",
     "@types/node": "^18.11.9",
@@ -50,6 +51,7 @@
     "@prisma/client": "^4.6.1",
     "@sinclair/typebox": "^0.25.10",
     "ajv-formats": "^2.1.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
