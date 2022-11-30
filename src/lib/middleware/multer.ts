@@ -1,7 +1,21 @@
 import multer from "multer";
+import mime from "mime";
+
+import { randomUUID } from "node:crypto";
+
+export const generatePhotoFilename = (mimeType: string) => {
+    const randomeFilename = `${randomUUID()}-${Date.now()}}`;
+    const fileExtension = mime.getExtension(mimeType);
+    const filename = `${randomeFilename}.${fileExtension}`;
+
+    return filename;
+};
 
 const storage = multer.diskStorage({
     destination: "uploads/",
+    filename: (request, file, callback) => {
+        return callback(null, generatePhotoFilename(file.mimetype));
+    },
 });
 
 export const multerOptions = {};
