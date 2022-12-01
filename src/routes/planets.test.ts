@@ -1,6 +1,6 @@
 import supertest from "supertest";
-import { prismaMock } from "./lib/prisma/client.mock";
-import app from "./app";
+import { prismaMock } from "../lib/prisma/client.mock";
+import app from "../app";
 
 const request = supertest(app);
 
@@ -274,8 +274,7 @@ describe("POST /planets/:id/photo", () => {
     });
 
     test("Invalid request with text file upload", async () => {
-        const response = await
-             request
+        const response = await request
             .post("/planets/23/photo")
             .attach("photo", "test-fixtures/photos/file.txt")
             .expect(500)
